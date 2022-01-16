@@ -328,7 +328,7 @@ The type byte is represented as such:
 where:
 
 * `A` = `0` if the size of the name fits on the type byte (size < 64), and `1` otherwise,
-* `N` = the six most significant bits of the size, left-padded with `0` to fit the whole available space, including additional size bytes.
+* `N` = the six least significant bits of the size, left-padded with `0` to fit the whole available space, including additional size bytes.
 
 Every additional size byte is structured like this:
 
@@ -341,7 +341,7 @@ Every additional size byte is structured like this:
 where:
 
 * `A` = `0` if this is the last size byte, `1` otherwise,
-* `N` = the seven next most significant bytes of the name size.
+* `N` = the seven next least significant bytes of the name size.
 
 And finally, the name data is composed of `N` bytes (`N` being the concatenation of all the bits read as part of the type and additional size bytes), which must form a valid UTF-8 string that represents the name of the entry.
 
