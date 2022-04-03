@@ -233,7 +233,7 @@ average-blob =  4BYTE 0*4294967295BYTE
 long-blob    =  8BYTE 0*18446744073709551615BYTE
 
 ; Extension
-extension     = $ (0111 ext-id) [ext-entry-size] *BYTE
+extension     = $ (0111 ext-id) [ext-data-size] *BYTE
 ext-data-size = $ (has-more 7BIT)
 
 ; Grammatical rules
