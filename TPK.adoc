@@ -311,6 +311,14 @@ The size of the data block entry is stored in eight bytes, with the currently co
 
 ==== Entries
 
+Entries may contain more than one non-marker element, in order to make them easily extensible.
+
+This mechanism is mostly aimed for extensions, or for users to add context to an already existing value. It is important to note, however, that elements in the same entries should appear in a decreasing order of importance: the first element should be the main representation of the data that the entry aims to represent, and subsequent elements should only bring contextual or supportive information.
+
+Note that due to this order of relevance, the earliest element must be considered as the "truthful" one for entries that have conflicting elements. For example, an entry that contains both a folder and a collection element, in that order, should be considered by a reader as a folder node in the TPK tree, and not a collection one.
+
+==== Markers
+
 Marker elements are composed of the following parts:
 
 * The type byte that also contains 6 bits for name size, which is particularly useful for small names,
